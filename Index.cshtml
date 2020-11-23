@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Academy.Models.Produkt>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Tabela e produkteve</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">productId</th>
+            <th scope="col">ProductName</th>
+            <th scope="col">QuantityPerUnit</th>
+            <th scope="col">UnitPrice</th>
+            <th scope="col">Company Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produkt in Model)
+        {
+            <tr>
+                <td>@produkt.productId</td>
+                <td>@produkt.ProductName</td>
+                <td>@produkt.QuantityPerUnit</td>
+                <td>@produkt.UnitPrice</td>
+                <td>@produkt.furnitors.CompanyName</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@model Academy.Models.Produkt
+@{
+    ViewBag.Title = "CreateProd";
+}
+
+<h2>Create Product</h2>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen"
+      href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new{@class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new{@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductName, new{htmlAttributes = new{@class = "form-control", @placeholder = "Product Name", autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new{@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuantityPerUnit, htmlAttributes: new{@class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuantityPerUnit, new{htmlAttributes = new{@class = "form-control", @placeholder = "Quantity per unit", autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.QuantityPerUnit, "", new{@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Unit price", autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+            </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FurnitorId, htmlAttributes: new { @class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.FurnitorId, new SelectList(ViewBag.furnitor, "Id", "CompanyName"), "Please select supplier name", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FurnitorId, "", new { @class = "text-danger" })
+                </div>
+           
+            </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create product " class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        
+}
